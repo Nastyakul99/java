@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +15,9 @@ import lombok.Setter;
 public class VacanciesAndSkillsPKey implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@ManyToOne(optional = false)
 	private Vacancy vacancy;
+	@ManyToOne(optional = false)
     private Skill skill;
     
 	@Override

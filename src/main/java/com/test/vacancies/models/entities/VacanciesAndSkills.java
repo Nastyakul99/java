@@ -12,6 +12,6 @@ import lombok.Setter;
 @Table(name = "vacancies_and_skills")
 public class VacanciesAndSkills implements IEntity{
 
-	@EmbeddedId
+	@EmbeddedId()
 	private VacanciesAndSkillsPKey primaryKey;
 }
