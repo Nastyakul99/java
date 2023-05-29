@@ -1,5 +1,6 @@
 package com.test.vacancies.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,8 +36,23 @@ public class Company implements IEntity{
     private Industry industry;
     
     @OneToMany(mappedBy="company")
-    private List<Vacancy> vacansies;
+    private List<Vacancy> vacansies = new ArrayList<>();
     
     @Embedded
     private ContactInfo contactInfo;
+    
+    public void setIndustry(Industry industry) {
+    	this.industry = industry;
+    	if(industry != null)
+    	industry.getCompanies().add(this);
+    }
+    
+    public void setContactInfo(String telephone, String email) {
+    	if(contactInfo == null) {
+    		this.contactInfo = new ContactInfo(telephone, email);
+    		return;
+    	}
+    	this.contactInfo.setEmail(email);
+    	this.contactInfo.setTelephone(telephone);
+    }
 }

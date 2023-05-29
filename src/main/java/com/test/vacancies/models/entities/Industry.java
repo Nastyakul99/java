@@ -1,5 +1,6 @@
 package com.test.vacancies.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
+/**
+ * - Медицина
+ * 		- Лечебные учреждения
+ * 			- Ветеринарная деятельность
+ * 			- Детские лечебные учреждения
+ * 		- Фармацевтика
+ * 			- Фармацевтическая продукция (продвижение, оптовая торговля)
+ * 			- 	Фармацевтическая продукция (производство)
+ * 		- Клинические исследования
+ */
 @Getter
 @Setter
 @Entity
@@ -32,8 +42,14 @@ public class Industry implements IEntity{
     private Industry parent;
     
     @OneToMany(mappedBy="parent")
-    private List<Industry> children;
+    private List<Industry> children = new ArrayList<>();
     
     @OneToMany(mappedBy="industry")
-    private List<Company> companies;
+    private List<Company> companies = new ArrayList<>();
+    
+    public void setParent(Industry parent) {
+    	this.parent = parent;
+    	if(parent != null)
+    	parent.getChildren().add(this);
+    }
 }

@@ -1,5 +1,6 @@
 package com.test.vacancies.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,5 +30,5 @@ public class Skill implements IEntity{
     @OneToMany(mappedBy = "primaryKey.skill",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    List<VacanciesAndSkills> vacanciesAndSkills;
+    List<VacanciesAndSkills> vacanciesAndSkills = new ArrayList<>();
 }

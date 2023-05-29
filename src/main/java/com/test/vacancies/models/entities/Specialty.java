@@ -1,5 +1,6 @@
 package com.test.vacancies.models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,9 +32,9 @@ public class Specialty implements IEntity{
     private Specialty parent;
     
     @OneToMany(mappedBy="parent")
-    private List<Specialty> children;
+    private List<Specialty> children = new ArrayList<>();
     
     @OneToMany(mappedBy="specialty")
-    private List<Vacancy> specialty;
+    private List<Vacancy> specialty = new ArrayList<>();
 }
 

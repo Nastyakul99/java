@@ -2,10 +2,8 @@ package com.test.vacancies.models.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,6 +34,4 @@ public class VacanciesAndSkillsPKey implements Serializable{
 		return Objects.equals(skill.getId(), other.skill.getId())
 				&& Objects.equals(vacancy.getId(), other.vacancy.getId());
 	}
-    
-    
 }
