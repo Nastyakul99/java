@@ -32,4 +32,14 @@ public class WorkSchedule implements IEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vacancy_id")
     private Vacancy vacancy;
+
+	@Override
+	public WorkSchedule merge(IEntity m) {
+		if(m instanceof WorkSchedule) {
+			this.setVacancy(((WorkSchedule)m).getVacancy());
+			this.setName(((WorkSchedule)m).getName());
+		}
+		
+		return this;
+	}
 }

@@ -14,4 +14,9 @@ public class VacanciesAndSkills implements IEntity{
 
 	@EmbeddedId()
 	private VacanciesAndSkillsPKey primaryKey;
+
+	@Override
+	public VacanciesAndSkills merge(IEntity m) {
+		return this;
+	}
 }

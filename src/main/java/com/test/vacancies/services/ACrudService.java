@@ -39,7 +39,9 @@ public abstract class ACrudService <E extends IEntity,
 	@Override
 	public R update(I id, U entity) {
 		return repository.findById(id)
-				.map(e->toEntityMapper.map(entity, e))
+				.map(e->{					
+					return (E)e.merge(toEntityMapper.map(entity));
+				})    
 				.map(repository::save)
 				.map(e -> toDTOMapper.map(e))
 				.get();

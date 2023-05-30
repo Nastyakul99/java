@@ -12,5 +12,5 @@ public class CompanyUpdateDTO implements IDTOUpdate{
 	
 	private Integer industryId;
 	
-	private ContactInfoDTO contactInfoDTO;
+	private ContactInfoDTO contactInfo;
 }

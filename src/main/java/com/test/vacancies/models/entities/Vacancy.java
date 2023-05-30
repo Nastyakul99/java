@@ -55,4 +55,18 @@ public class Vacancy extends AuditingEntity{
     
     @OneToMany(mappedBy = "vacancy", fetch = FetchType.LAZY)
     List<WorkSchedule> workSchedule = new ArrayList<>();
+
+	@Override
+	public Vacancy merge(IEntity m) {
+		if(m instanceof Vacancy) {
+			this.setCompany(((Vacancy)m).getCompany());
+			this.setName(((Vacancy)m).getName());
+			this.setDescription(((Vacancy)m).getDescription());
+			this.setWorkExperience(((Vacancy)m).getWorkExperience());
+			this.setSalary(((Vacancy)m).getSalary());
+			this.setSpecialty(((Vacancy)m).getSpecialty());
+		}
+		
+		return this;
+	}
 }

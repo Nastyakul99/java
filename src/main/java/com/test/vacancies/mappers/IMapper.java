@@ -1,8 +1,6 @@
 package com.test.vacancies.mappers;
 
-public interface IMapper<F, T> {
-
-	T map(F object);
+public interface IMapper <F, T>{
 	
-	T map(F from, T to);
+	T map(F object);
 }

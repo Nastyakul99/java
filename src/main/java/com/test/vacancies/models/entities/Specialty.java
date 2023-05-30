@@ -36,5 +36,15 @@ public class Specialty implements IEntity{
     
     @OneToMany(mappedBy="specialty")
     private List<Vacancy> specialty = new ArrayList<>();
+
+	@Override
+	public Specialty merge(IEntity m) {
+		if(m instanceof Specialty) {
+			this.setName(((Specialty)m).getName());
+			this.setParent(((Specialty)m).getParent());
+		}
+		
+		return this;
+	}
 }
 

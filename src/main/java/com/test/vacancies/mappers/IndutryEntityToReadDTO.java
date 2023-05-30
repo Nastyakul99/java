@@ -1,27 +1,17 @@
 package com.test.vacancies.mappers;
 
-import org.springframework.stereotype.Component;
-
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import com.test.vacancies.models.dto.update.IndustryUpdateReadDTO;
 import com.test.vacancies.models.entities.Industry;
 
-@Component
-public class IndutryEntityToReadDTO implements IMapper<Industry, IndustryUpdateReadDTO>{
+@Mapper(componentModel = "spring")
+public abstract class IndutryEntityToReadDTO implements IMapper<Industry, IndustryUpdateReadDTO>{
 
+    @Mapping(target = "parentId", expression = "java(object.getParent()!= null "
+    		+ "? object.getParent().getId() "
+    		+ ": null)")
 	@Override
-	public IndustryUpdateReadDTO map(Industry object) {
-		IndustryUpdateReadDTO dto = new IndustryUpdateReadDTO();
-		return map(object, dto);
-	}
-
-	@Override
-	public IndustryUpdateReadDTO map(Industry from, IndustryUpdateReadDTO to) {
-		to.setName(from.getName());
-		Industry parent = from.getParent();
-		if(parent != null) {
-			to.setParentId(parent.getId());
-		}
-		return to;
-	}
+	public abstract IndustryUpdateReadDTO map(Industry object);
 
 }

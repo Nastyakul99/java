@@ -31,4 +31,13 @@ public class Skill implements IEntity{
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     List<VacanciesAndSkills> vacanciesAndSkills = new ArrayList<>();
+
+	@Override
+	public Skill merge(IEntity m) {
+		if(m instanceof Skill) {
+			this.setName(((Skill)m).getName());
+		}
+		
+		return this;
+	}
 }

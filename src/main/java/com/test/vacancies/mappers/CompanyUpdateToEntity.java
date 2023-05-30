@@ -1,41 +1,25 @@
 package com.test.vacancies.mappers;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.test.vacancies.models.dto.update.CompanyUpdateDTO;
-import com.test.vacancies.models.dto.update.ContactInfoDTO;
 import com.test.vacancies.models.entities.Company;
-import com.test.vacancies.models.entities.ContactInfo;
 import com.test.vacancies.repositories.IndustryRepository;
 
-@Component
-public class CompanyUpdateToEntity implements IMapper<CompanyUpdateDTO, Company>{
-	
-	private final IndustryRepository industryRepository;
-	
-	public CompanyUpdateToEntity(IndustryRepository industryRepository) {
-		this.industryRepository = industryRepository;
-		
-	}
+import lombok.Setter;
 
-	@Override
-	public Company map(CompanyUpdateDTO object) {
-		Company company = new Company();
-		return map(object, company);
-	}
-
-	@Override
-	public Company map(CompanyUpdateDTO from, Company to) {
-		to.setName(from.getName());
-		if(from.getIndustryId() != null) {
-			to.setIndustry(industryRepository.findById(from.getIndustryId()).orElse(null));
-		}
-		to.setContactInfo(map(from.getContactInfoDTO()));
-		return to;
-	}
+@Mapper(componentModel = "spring")
+public abstract class CompanyUpdateToEntity implements IMapper<CompanyUpdateDTO, Company>{
 	
-	private ContactInfo map(ContactInfoDTO dto) {
-		if(dto == null) return null;
-		return new ContactInfo(dto.getTelephone(), dto.getEmail());
-	}
+	@Autowired
+	@Setter
+	protected IndustryRepository industryRepository;
+
+    @Mapping(target = "industry", expression = "java(object.getIndustryId()!= null "
+    		+ "? industryRepository.findById(object.getIndustryId()).orElse(null) "
+    		+ ": null)")
+	@Override
+	public abstract Company map(CompanyUpdateDTO object);
 
 }

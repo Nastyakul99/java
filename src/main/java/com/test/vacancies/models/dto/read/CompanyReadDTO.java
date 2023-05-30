@@ -15,5 +15,5 @@ public class CompanyReadDTO implements IDTORead{
 	
 	private IndustryUpdateReadDTO industry;
 	
-	private ContactInfoDTO contactInfoDTO;
+	private ContactInfoDTO contactInfo;
 }

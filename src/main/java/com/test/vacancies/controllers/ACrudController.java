@@ -3,7 +3,6 @@ package com.test.vacancies.controllers;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -14,13 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import com.test.vacancies.models.dto.read.IDTORead;
 import com.test.vacancies.models.dto.update.IDTOUpdate;
-import com.test.vacancies.models.dto.update.IndustryUpdateReadDTO;
 import com.test.vacancies.models.entities.IEntity;
 import com.test.vacancies.services.ACrudService;
-import com.test.vacancies.services.IndustryService;
 
 public abstract class ACrudController <S extends ACrudService<E, U, R, I>,
 										E extends IEntity,

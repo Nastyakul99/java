@@ -55,4 +55,15 @@ public class Company implements IEntity{
     	this.contactInfo.setEmail(email);
     	this.contactInfo.setTelephone(telephone);
     }
+
+	@Override
+	public Company merge(IEntity m) {
+		if(m instanceof Company) {
+			this.setContactInfo(((Company)m).getContactInfo());
+			this.setName(((Company)m).getName());
+			this.setIndustry(((Company)m).getIndustry());
+		}
+		
+		return this;
+	}
 }

@@ -1,35 +1,24 @@
 package com.test.vacancies.mappers;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.test.vacancies.models.dto.update.IndustryUpdateReadDTO;
 import com.test.vacancies.models.entities.Industry;
 import com.test.vacancies.repositories.IndustryRepository;
+import lombok.Setter;
 
-@Component
-public class IndustryUpdateToEntity implements IMapper<IndustryUpdateReadDTO, Industry>{
+@Mapper(componentModel = "spring")
+public abstract class IndustryUpdateToEntity implements IMapper<IndustryUpdateReadDTO, Industry>{
 	
-	private final IndustryRepository industryRepository;
-	
-	public IndustryUpdateToEntity(IndustryRepository industryRepository) {
-		this.industryRepository = industryRepository;
-	}
+	@Autowired
+	@Setter
+	protected IndustryRepository industryRepository;
 
+    @Mapping(target = "parent", expression = "java(object.getParentId()!= null "
+    		+ "? industryRepository.findById(object.getParentId()).orElse(null) "
+    		+ ": null)")
 	@Override
-	public Industry map(IndustryUpdateReadDTO object) {
-		Industry industry = new Industry();
-		return map(object, industry);
-	}
-
-	@Override
-	public Industry map(IndustryUpdateReadDTO from, Industry to) {
-		to.setName(from.getName());
-		to.setParent(getParent(from.getParentId()));
-		return to;
-	}
-	
-	private Industry getParent(Integer id) {
-		if(id==null) return null;
-		return industryRepository.findById(id).orElse(null);
-	}
+	public abstract Industry map(IndustryUpdateReadDTO object);
 
 }

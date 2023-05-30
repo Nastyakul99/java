@@ -52,4 +52,14 @@ public class Industry implements IEntity{
     	if(parent != null)
     	parent.getChildren().add(this);
     }
+
+	@Override
+	public Industry merge(IEntity m) {
+		if(m instanceof Industry) {
+			this.setParent(((Industry)m).getParent());
+			this.setName(((Industry)m).getName());
+		}
+		
+		return this;
+	}
 }
