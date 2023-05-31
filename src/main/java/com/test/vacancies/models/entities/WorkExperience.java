@@ -1,13 +1,9 @@
 package com.test.vacancies.models.entities;
 
-import java.time.Period;
-
+import java.time.Duration;
 import javax.persistence.Embeddable;
-
 import org.hibernate.annotations.TypeDef;
-
 import com.vladmihalcea.hibernate.type.interval.PostgreSQLIntervalType;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,10 +11,10 @@ import lombok.Setter;
 @Setter
 @TypeDef(
 	    typeClass = PostgreSQLIntervalType.class,
-	    defaultForType = Period.class
+	    defaultForType = Duration.class
 	)
 @Embeddable
 public class WorkExperience {
-	private Period minWorkExperience;
-	private Period maxWorkExperience;
+	private Duration minWorkExperience;
+	private Duration maxWorkExperience;
 }

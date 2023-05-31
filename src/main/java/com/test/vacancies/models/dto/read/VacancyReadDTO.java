@@ -19,10 +19,10 @@ public class VacancyReadDTO implements IDTORead{
 	private CompanyReadDTO company;
 	
 	private String description;
-//	
-//	private WorkExperienceUpdateReadDTO workExperience;
-//	
-//	private SalaryUpdateReadDTO salary;
+	
+	private WorkExperienceUpdateReadDTO workExperience;
+	
+	private SalaryUpdateReadDTO salary;
 //	
 //	private SpecialtyUpdateReadDTO specialty;
 }
