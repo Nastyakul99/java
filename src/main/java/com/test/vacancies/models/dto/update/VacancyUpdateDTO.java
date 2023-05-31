@@ -1,5 +1,8 @@
 package com.test.vacancies.models.dto.update;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.test.vacancies.models.entities.Company;
 import com.test.vacancies.models.entities.Salary;
 import com.test.vacancies.models.entities.WorkExperience;
@@ -24,6 +27,8 @@ public class VacancyUpdateDTO implements IDTOUpdate{
 	private WorkExperienceUpdateReadDTO workExperience;
 	
 	private SalaryUpdateReadDTO salary;
+	
+	List<WorkScheduleDTO> workSchedule = new ArrayList<>();
 //	
 //	private SpecialtyUpdateReadDTO specialty;
 }

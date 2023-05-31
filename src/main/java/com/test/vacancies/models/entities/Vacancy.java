@@ -2,7 +2,6 @@ package com.test.vacancies.models.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -53,7 +52,7 @@ public class Vacancy extends AuditingEntity{
             cascade = CascadeType.ALL)
     List<VacanciesAndSkills> vacanciesAndSkills = new ArrayList<>();
     
-    @OneToMany(mappedBy = "vacancy", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "vacancy", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<WorkSchedule> workSchedule = new ArrayList<>();
 
 	@Override

@@ -8,7 +8,7 @@ import com.test.vacancies.models.entities.Vacancy;
 import com.test.vacancies.repositories.CompanyRepository;
 import lombok.Setter;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses=WorkScheduleUpdateToEntity.class)
 public abstract class VacancyUpdateToEntity implements IMapper<VacancyUpdateDTO, Vacancy>{
 
 	@Autowired

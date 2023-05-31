@@ -35,7 +35,7 @@ public class Specialty implements IEntity{
     private List<Specialty> children = new ArrayList<>();
     
     @OneToMany(mappedBy="specialty")
-    private List<Vacancy> specialty = new ArrayList<>();
+    private List<Vacancy> vacansies = new ArrayList<>();
 
 	@Override
 	public Specialty merge(IEntity m) {

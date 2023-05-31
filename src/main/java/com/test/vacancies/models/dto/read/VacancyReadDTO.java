@@ -1,10 +1,10 @@
 package com.test.vacancies.models.dto.read;
 
-import com.test.vacancies.models.dto.update.ContactInfoDTO;
-import com.test.vacancies.models.dto.update.IndustryUpdateReadDTO;
+import java.util.ArrayList;
+import java.util.List;
 import com.test.vacancies.models.dto.update.SalaryUpdateReadDTO;
-import com.test.vacancies.models.dto.update.SpecialtyUpdateReadDTO;
 import com.test.vacancies.models.dto.update.WorkExperienceUpdateReadDTO;
+import com.test.vacancies.models.dto.update.WorkScheduleDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +23,8 @@ public class VacancyReadDTO implements IDTORead{
 	private WorkExperienceUpdateReadDTO workExperience;
 	
 	private SalaryUpdateReadDTO salary;
+	
+	List<WorkScheduleDTO> workSchedule = new ArrayList<>();
 //	
 //	private SpecialtyUpdateReadDTO specialty;
 }

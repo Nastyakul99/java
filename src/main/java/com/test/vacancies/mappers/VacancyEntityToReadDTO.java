@@ -7,7 +7,7 @@ import com.test.vacancies.models.dto.read.VacancyReadDTO;
 import com.test.vacancies.models.entities.Vacancy;
 import lombok.Setter;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses=WorkScheduleEntityToReadDTO.class)
 public abstract class VacancyEntityToReadDTO implements IMapper<Vacancy, VacancyReadDTO>{
 	
 	@Autowired
